@@ -1166,7 +1166,7 @@ GameObject:
   - component: {fileID: 443200489}
   - component: {fileID: 443200488}
   m_Layer: 5
-  m_Name: 0.75x
+  m_Name: 0.75x_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1237,10 +1237,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: set_speed
-        m_Mode: 4
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: Set075
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2198,7 +2198,7 @@ GameObject:
   - component: {fileID: 1076053171}
   - component: {fileID: 1076053170}
   m_Layer: 5
-  m_Name: Right
+  m_Name: Right_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2269,10 +2269,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 3
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: SetRight
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2356,12 +2356,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 849580404}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1139217009 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 20b668c2bbd9fc04e87a667fe07a7dc3,
-    type: 3}
-  m_PrefabInstance: {fileID: 849580404}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1139217010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,7 +2381,7 @@ GameObject:
   - component: {fileID: 1140962373}
   - component: {fileID: 1140962372}
   m_Layer: 5
-  m_Name: Soto-Uke
+  m_Name: Soto-Uke_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2458,10 +2452,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: SetSOTOUKE
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2757,7 +2751,7 @@ GameObject:
   - component: {fileID: 1223109948}
   - component: {fileID: 1223109947}
   m_Layer: 5
-  m_Name: 1.50x
+  m_Name: 1.50x_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2828,10 +2822,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: set_speed
-        m_Mode: 4
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: Set150
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3226,7 +3220,7 @@ GameObject:
   - component: {fileID: 1377924732}
   - component: {fileID: 1377924731}
   m_Layer: 5
-  m_Name: Gedan-Barai
+  m_Name: Gedan-Barai_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3297,10 +3291,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: SetGEDANBARAI
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3360,7 +3354,7 @@ GameObject:
   - component: {fileID: 1459712137}
   - component: {fileID: 1459712136}
   m_Layer: 5
-  m_Name: 0.50x
+  m_Name: 0.50x_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3431,10 +3425,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: set_speed
-        m_Mode: 4
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: Set050
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3528,7 +3522,7 @@ GameObject:
   - component: {fileID: 1507545410}
   - component: {fileID: 1507545409}
   m_Layer: 5
-  m_Name: Left
+  m_Name: Left_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3599,10 +3593,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 3
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: SetLeft
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3760,7 +3754,7 @@ GameObject:
   - component: {fileID: 1548301185}
   - component: {fileID: 1548301184}
   m_Layer: 5
-  m_Name: Uchi-Uke
+  m_Name: Uchi-Uke_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3831,10 +3825,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: SetUCHIUKE
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4234,7 +4228,7 @@ GameObject:
   - component: {fileID: 1712328285}
   - component: {fileID: 1712328284}
   m_Layer: 5
-  m_Name: 0.25x
+  m_Name: 0.25x_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4305,10 +4299,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: set_speed
-        m_Mode: 4
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: Set025
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4368,7 +4362,7 @@ GameObject:
   - component: {fileID: 1768160917}
   - component: {fileID: 1768160916}
   m_Layer: 5
-  m_Name: 1.00x
+  m_Name: 1.00x_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4439,10 +4433,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: set_speed
-        m_Mode: 4
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: Set100
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4764,7 +4758,7 @@ GameObject:
   - component: {fileID: 2056141495}
   - component: {fileID: 2056141494}
   m_Layer: 5
-  m_Name: 1.25x
+  m_Name: 1.25x_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,10 +4829,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: set_speed
-        m_Mode: 4
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: Set125
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4898,7 +4892,7 @@ GameObject:
   - component: {fileID: 2099322071}
   - component: {fileID: 2099322070}
   m_Layer: 5
-  m_Name: Age-Uke
+  m_Name: Age-Uke_BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4969,10 +4963,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1139217009}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
+      - m_Target: {fileID: 1139217010}
+        m_TargetAssemblyTypeName: animationScript, Assembly-CSharp
+        m_MethodName: SetAGEUKE
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
