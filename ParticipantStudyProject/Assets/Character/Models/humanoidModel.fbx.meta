@@ -11,17 +11,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Arms
-    second: {fileID: 2100000, guid: 766fd3ff04aab4745a764d33daac86fa, type: 2}
+    second: {fileID: 2100000, guid: 08a74fd4cbf4c8349bcfcc54a53a0bd7, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Body
-    second: {fileID: 2100000, guid: 43714b68324cc2c409d534d9874f2a2b, type: 2}
+    second: {fileID: 2100000, guid: 0daf9b5095831bf41a02b186b9183e9f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Legs
-    second: {fileID: 2100000, guid: 8b25e99361ac31d4e9ae83c46aee69ea, type: 2}
+    second: {fileID: 2100000, guid: 42ecf2b8df1f46c4f88fe1d8e26bdacb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

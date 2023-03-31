@@ -18,6 +18,9 @@ public class animationScript : MonoBehaviour
 
     Animator animatorController;
 
+    string state;
+    float pauseFrame;
+
     void Start()
     {
         animatorController = GetComponent<Animator>();
@@ -31,22 +34,38 @@ public class animationScript : MonoBehaviour
 
     public void SetAGEUKE()
     {
-        animatorController.Play("Base Layer.AGE-UKE");
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 1.00f);
+        state = "Base Layer.AGE-UKE";
+        pauseFrame = 24.0f/64.0f;
+        animatorController.Play(state);
     }
 
     public void SetGEDANBARAI()
     {
-        animatorController.Play("Base Layer.GEDAN-BARAI");
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 1.00f);
+        state = "Base Layer.GEDAN-BARAI";
+        pauseFrame = 20.0f/66.0f;
+        animatorController.Play(state);
     }
 
     public void SetSOTOUKE()
     {
-        animatorController.Play("Base Layer.SOTO-UKE");
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 1.00f);
+        state = "Base Layer.SOTO-UKE";
+        pauseFrame = 20.0f/53.0f;
+        animatorController.Play(state);
     }
 
     public void SetUCHIUKE()
     {
-        animatorController.Play("Base Layer.UCHI-UKE");
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 1.00f);
+        state = "Base Layer.UCHI-UKE";
+        pauseFrame = 19.0f/45.0f;
+        animatorController.Play(state);
     }
 
     //-------------------------------------------------------------
@@ -55,34 +74,58 @@ public class animationScript : MonoBehaviour
     // playback speed button functions
     //-------------------------------------------------------------
 
+    public void Set001()
+    {
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 0.01f);
+    }
+
+    public void Set005()
+    {
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 0.05f);
+    }
+
+    public void Set010()
+    {
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 0.10f);
+    }
+
+    public void Set015()
+    {
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 0.15f);
+    }
+
+    public void Set020()
+    {
+        animatorController.speed = 1;
+        animatorController.SetFloat("speedMultiplier", 0.20f);
+    }
+    
     public void Set025()
     {
+        animatorController.speed = 1;
         animatorController.SetFloat("speedMultiplier", 0.25f);
     }
 
     public void Set050()
     {
+        animatorController.speed = 1;
         animatorController.SetFloat("speedMultiplier", 0.50f);
     }
 
     public void Set075()
     {
+        animatorController.speed = 1;
         animatorController.SetFloat("speedMultiplier", 0.75f);
     }
 
     public void Set100()
     {
+        animatorController.speed = 1;
         animatorController.SetFloat("speedMultiplier", 1.00f);
-    }
-
-    public void Set125()
-    {
-        animatorController.SetFloat("speedMultiplier", 1.25f);
-    }
-
-    public void Set150()
-    {
-        animatorController.SetFloat("speedMultiplier", 1.50f);
     }
 
     //-------------------------------------------------------------
@@ -93,12 +136,31 @@ public class animationScript : MonoBehaviour
 
     public void SetLeft()
     {
+        animatorController.speed = 1;
         animatorController.SetBool("mirrored", false);
     }
 
     public void SetRight()
     {
+        animatorController.speed = 1;
         animatorController.SetBool("mirrored", true);
+    }
+
+    //-------------------------------------------------------------
+
+
+    // pause button functions
+    //-------------------------------------------------------------
+
+    public void pauseAtFrame()
+    {
+        animatorController.Play(state, -1, pauseFrame);
+        animatorController.speed = 0;
+    }
+
+    public void keepPlaying()
+    {
+        animatorController.speed = 1;
     }
 
     //-------------------------------------------------------------
