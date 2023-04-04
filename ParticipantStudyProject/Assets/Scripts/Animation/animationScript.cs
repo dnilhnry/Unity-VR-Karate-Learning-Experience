@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class animationScript : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class animationScript : MonoBehaviour
     // documentation
     //-------------------------------------------------------------
 
+    // https://docs.unity3d.com/ScriptReference/GameObject.html
+    // https://docs.unity3d.com/ScriptReference/UIElements.Slider.html
     // https://docs.unity3d.com/ScriptReference/Animator.html
 
     //-------------------------------------------------------------
@@ -16,14 +19,33 @@ public class animationScript : MonoBehaviour
     // initialise
     //-------------------------------------------------------------
 
-    Animator animatorController;  
+    GameObject character;
+    Animator animatorController;
+    [SerializeField] private Slider height_Slider;
+    [SerializeField] private Text height_Text;
 
+    float defaultHeight = 177.0f;
+    float heightMultiplier;
     string state;
     float pauseFrame;
 
     void Start()
     {
+        character = GameObject.Find("humanoidModel");
         animatorController = GetComponent<Animator>();
+    }
+
+    //-------------------------------------------------------------
+
+
+    // set character height
+    //-------------------------------------------------------------
+
+    public void SetHeight()
+    {
+        heightMultiplier = height_Slider.value/defaultHeight;
+        character.transform.localScale = new Vector3(0.75f + heightMultiplier/4,heightMultiplier,0.75f + heightMultiplier/4);
+        height_Text.text = height_Slider.value.ToString("0") +  " cm";
     }
 
     //-------------------------------------------------------------
@@ -152,13 +174,13 @@ public class animationScript : MonoBehaviour
     // pause button functions
     //-------------------------------------------------------------
 
-    public void pauseAtFrame()
+    public void Pause()
     {
         animatorController.Play(state, -1, pauseFrame);
         animatorController.speed = 0;
     }
 
-    public void keepPlaying()
+    public void Resume()
     {
         animatorController.speed = 1;
     }
