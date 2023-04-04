@@ -116,22 +116,22 @@ public class BWPlayer : MonoBehaviour
         // Navigate by keyboard WASD
         if (BWKeyboard.Is_W_Pressed())
         {
-            movement = q * new Vector3(0, 0, 1.0f);
+            movement = q * new Vector3(0, 0, -1.0f);
             transform.position += movement * speed;
         }
         if (BWKeyboard.Is_S_Pressed())
         {
-            movement = q * new Vector3(0, 0, -1.0f);
+            movement = q * new Vector3(0, 0, 1.0f);
             transform.position += movement * speed;
         }
         if (BWKeyboard.Is_A_Pressed())
         {
-            movement = q * new Vector3(-1.0f, 0, 0);
+            movement = q * new Vector3(1.0f, 0, 0);
             transform.position += movement * speed;
         }
         if (BWKeyboard.Is_D_Pressed())
         {
-            movement = q * new Vector3(1.0f, 0, 0);
+            movement = q * new Vector3(-1.0f, 0, 0);
             transform.position += movement * speed;
         }
     }

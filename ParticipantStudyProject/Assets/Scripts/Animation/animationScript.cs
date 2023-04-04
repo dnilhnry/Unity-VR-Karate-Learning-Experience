@@ -16,7 +16,7 @@ public class animationScript : MonoBehaviour
     // initialise
     //-------------------------------------------------------------
 
-    Animator animatorController;
+    Animator animatorController;  
 
     string state;
     float pauseFrame;
