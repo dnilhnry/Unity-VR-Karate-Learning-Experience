@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class infoNameScript : MonoBehaviour
+public class infoScript : MonoBehaviour
 {
     
     // documentation
@@ -17,11 +17,11 @@ public class infoNameScript : MonoBehaviour
     // initialise
     //-------------------------------------------------------------
 
-    Text Name;
+    [SerializeField] private Text Name;
+    [SerializeField] private Text Description;
 
     void Start()
     {
-        Name = GetComponent<Text>();
     }
 
     //-------------------------------------------------------------
@@ -33,21 +33,25 @@ public class infoNameScript : MonoBehaviour
     public void SetAGEUKE()
     {
         Name.text = "Age-Uke";
+        Description.text = "Age-Uke can be understood as 'rising block' in English";
     }
 
     public void SetGEDANBARAI()
     {
         Name.text = "Gedan-Barai";
+        Description.text = "Gedan-Barai can be understood as 'low block' in English";
     }
 
     public void SetSOTOUKE()
     {
         Name.text = "Soto-Uke";
+        Description.text = "Soto-Uke can be understood as 'outer block' in English";
     }
 
     public void SetUCHIUKE()
     {
         Name.text = "Uchi-Uke";
+        Description.text = "Uchi-Uke can be understood as 'inner block' in English";
     }
 
     //-------------------------------------------------------------
