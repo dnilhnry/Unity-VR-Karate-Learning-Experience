@@ -33,25 +33,33 @@ public class infoScript : MonoBehaviour
     public void SetAGEUKE()
     {
         Name.text = "Age-Uke";
-        Description.text = "Age-Uke can be understood as 'rising block' in English";
+        Description.text = "Age-Uke translates to 'rising block' in English \n";
+        Description.text = Description.text + "This technique is used to block an attack aimed at your head \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack is positioned above your head \n";
     }
 
     public void SetGEDANBARAI()
     {
         Name.text = "Gedan-Barai";
-        Description.text = "Gedan-Barai can be understood as 'low block' in English";
+        Description.text = "Gedan-Barai translates to 'low block' in English \n";
+        Description.text = Description.text + "This technique is used to block an attack aimed at your lower body \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack is positioned far to the side of your body \n";
     }
 
     public void SetSOTOUKE()
     {
         Name.text = "Soto-Uke";
-        Description.text = "Soto-Uke can be understood as 'outer block' in English";
+        Description.text = "Soto-Uke translates to 'outer block' in English \n";
+        Description.text = Description.text + "This technique is used to block an attack aimed at your chest \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack comes all the way across your body \n";
     }
 
     public void SetUCHIUKE()
     {
         Name.text = "Uchi-Uke";
-        Description.text = "Uchi-Uke can be understood as 'inner block' in English";
+        Description.text = "Uchi-Uke translates to 'inner block' in English \n";
+        Description.text = Description.text + "This technique is used to block an attack aimed at your chest \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack comes from the inside, across your body \n";
     }
 
     //-------------------------------------------------------------

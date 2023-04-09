@@ -55,38 +55,46 @@ public class animationScript : MonoBehaviour
 
     public void SetAGEUKE()
     {
-        animatorController.speed = 1;
-        animatorController.SetFloat("speedMultiplier", 1.00f);
+        animatorController.SetBool("mirrored", false);
+        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.AGE-UKE";
         pauseFrame = 24.0f/64.0f;
-        animatorController.Play(state);
+        animatorController.Play(state, -1, 0);
+        Set100();
+        animatorController.speed = 1;
     }
 
     public void SetGEDANBARAI()
     {
-        animatorController.speed = 1;
-        animatorController.SetFloat("speedMultiplier", 1.00f);
+        animatorController.SetBool("mirrored", false);
+        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.GEDAN-BARAI";
         pauseFrame = 20.0f/66.0f;
-        animatorController.Play(state);
+        animatorController.Play(state, -1, 0);
+        Set100();
+        animatorController.speed = 1;
     }
 
     public void SetSOTOUKE()
     {
-        animatorController.speed = 1;
-        animatorController.SetFloat("speedMultiplier", 1.00f);
+        animatorController.SetBool("mirrored", false);
+        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.SOTO-UKE";
         pauseFrame = 20.0f/53.0f;
-        animatorController.Play(state);
+        animatorController.Play(state, -1, 0);
+        Set100();
+        animatorController.speed = 1;
     }
 
     public void SetUCHIUKE()
     {
-        animatorController.speed = 1;
-        animatorController.SetFloat("speedMultiplier", 1.00f);
+        animatorController.SetBool("mirrored", false);
+        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.UCHI-UKE";
         pauseFrame = 19.0f/45.0f;
-        animatorController.Play(state);
+        animatorController.Play(state, -1, 0);
+        Set100();
+        animatorController.speed = 1;
     }
 
     //-------------------------------------------------------------
@@ -94,12 +102,6 @@ public class animationScript : MonoBehaviour
 
     // playback speed button functions
     //-------------------------------------------------------------
-
-    public void Set001()
-    {
-        animatorController.speed = 1;
-        animatorController.SetFloat("speedMultiplier", 0.01f);
-    }
 
     public void Set005()
     {
