@@ -19,7 +19,7 @@ public class animationScript : MonoBehaviour
     // initialise
     //-------------------------------------------------------------
 
-    GameObject character;
+    [SerializeField] private GameObject character;
     Animator animatorController;
     [SerializeField] private Slider height_Slider;
     [SerializeField] private Text height_Text;
@@ -31,7 +31,6 @@ public class animationScript : MonoBehaviour
 
     void Start()
     {
-        character = GameObject.Find("humanoidModel");
         animatorController = GetComponent<Animator>();
     }
 
@@ -160,12 +159,14 @@ public class animationScript : MonoBehaviour
     {
         animatorController.speed = 1;
         animatorController.SetBool("mirrored", false);
+        animatorController.SetFloat("offset", 0.00f);
     }
 
     public void SetRight()
     {
         animatorController.speed = 1;
         animatorController.SetBool("mirrored", true);
+        animatorController.SetFloat("offset", 0.50f);
     }
 
     //-------------------------------------------------------------
