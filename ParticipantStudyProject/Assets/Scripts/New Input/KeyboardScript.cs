@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BWKeyboard : MonoBehaviour
+public class KeyboardScript : MonoBehaviour
 {
     // There's benefit to wrapping these here just so we can see both the differences between wasPressed isPressed
     // But also provide a layer of abstraction to all input allowing us to move to third party systems like Rewired

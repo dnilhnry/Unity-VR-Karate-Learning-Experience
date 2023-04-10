@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class BWTransform
+public static class TransformScript
 {
     public static Transform FindDeepChild(this Transform parentForSearch, string aName)
     {

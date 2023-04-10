@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BWHand : MonoBehaviour
+public class HandScript : MonoBehaviour
 {
-    public enum BWControllerType
+    public enum ControllerType
     {
         LeftHand,
         RightHand,
     };
 
     // For copying the correct pose
-    [SerializeField]
-    BWControllerType handId;
+    [SerializeField] ControllerType handId;
     
     void Start()
     {
-        if (BWVR.IsVR() == false)
+        if (VRScript.IsVR() == false)
         {
             gameObject.SetActive(false);
             return;

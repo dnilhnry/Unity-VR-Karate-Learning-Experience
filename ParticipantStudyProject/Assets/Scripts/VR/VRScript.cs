@@ -7,7 +7,7 @@ using UnityEngine.XR;
 using UnityEngine.XR.Management;
 
 [DefaultExecutionOrder(-100)]
-public class BWVR : MonoBehaviour
+public class VRScript : MonoBehaviour
 {
     [SerializeField]
     bool isVR = true;
@@ -21,25 +21,25 @@ public class BWVR : MonoBehaviour
     [SerializeField]
     float EyeHeightForNonVR = 1.6f;
 
-    public static BWVR instance;
+    public static VRScript instance;
 
     public Transform player;
     public static bool isLeft;
     public static bool isRight;
 
-    private static Transform trackedHeadPose;
-    private static Transform trackedLeftController;
-    private static Transform trackedRightController;
-    private static Transform roomOffset;
-    private static InputSystemUIInputModule [] inputSystem;
+    private Transform trackedHeadPose;
+    private Transform trackedLeftController;
+    private Transform trackedRightController;
+    private Transform roomOffset;
+    private InputSystemUIInputModule [] inputSystem;
      
-    public class BWInputController
+    public class InputController
     {
         public UnityEngine.XR.InputDevice device;
         public bool isPresent;
     }
 
-    static BWInputController[] controllerInput = new BWInputController[2];
+    static InputController[] controllerInput = new InputController[2];
 
     public static bool IsVR()
     {
@@ -58,19 +58,19 @@ public class BWVR : MonoBehaviour
         return false;
     }
 
-    BWVR()
+    VRScript()
     {
         instance = this;
-        controllerInput[0] = new BWInputController();
-        controllerInput[1] = new BWInputController();
+        controllerInput[0] = new InputController();
+        controllerInput[1] = new InputController();
     }
 
     void Awake()
     {
-        roomOffset = BWTransform.FindAlways("RoomOffset");
-        trackedHeadPose = BWTransform.FindAlways("Main Camera");
-        trackedLeftController = BWTransform.FindAlways("TrackedLeftController");
-        trackedRightController = BWTransform.FindAlways("TrackedRightController");
+        roomOffset = TransformScript.FindAlways("RoomOffset");
+        trackedHeadPose = TransformScript.FindAlways("Main Camera");
+        trackedLeftController = TransformScript.FindAlways("TrackedLeftController");
+        trackedRightController = TransformScript.FindAlways("TrackedRightController");
 
         // Look at the SerializeField variable exposed in the Editor.
         // Turn VR off if we are not using VR 
@@ -82,8 +82,8 @@ public class BWVR : MonoBehaviour
         }
 
         // Find the input systems
-        GameObject eventSystem1 = BWTransform.FindAlways("EventSystemVR").gameObject;
-        GameObject eventSystem2 = BWTransform.FindAlways("EventSystemNoVR").gameObject;
+        GameObject eventSystem1 = TransformScript.FindAlways("EventSystemVR").gameObject;
+        GameObject eventSystem2 = TransformScript.FindAlways("EventSystemNoVR").gameObject;
 
         // Maybe we haven't got VR. Turn off our flag.
         if (!XRGeneralSettings.Instance.Manager.isInitializationComplete)
@@ -105,17 +105,17 @@ public class BWVR : MonoBehaviour
         }
     }
 
-    public static BWInputController GetInput(BWHand.BWControllerType hand)
+    public static InputController GetInput(HandScript.ControllerType hand)
     {
         return controllerInput[(int)hand];
     }
 
-    private static UnityEngine.XR.InputDevice GetDevice(BWHand.BWControllerType hand)
+    private static UnityEngine.XR.InputDevice GetDevice(HandScript.ControllerType hand)
     {
         return GetInput(hand).device;
     }
 
-    public static bool IsTrigger(BWHand.BWControllerType hand)
+    public static bool IsTrigger(HandScript.ControllerType hand)
     {
         UnityEngine.XR.InputDevice device = GetDevice(hand);
 
@@ -129,10 +129,10 @@ public class BWVR : MonoBehaviour
 
     void Update()
     {
-        var values = EnumUtil.GetValues<BWHand.BWControllerType>();
-        foreach (BWHand.BWControllerType hand in values)
+        var values = EnumUtil.GetValues<HandScript.ControllerType>();
+        foreach (HandScript.ControllerType hand in values)
         {
-            BWInputController input = controllerInput[(int)hand];
+            InputController input = controllerInput[(int)hand];
             input.isPresent = false;
         }
 
@@ -151,24 +151,24 @@ public class BWVR : MonoBehaviour
                 continue;
             }
             
-            BWInputController input = null;
+            InputController input = null;
 
             if ((device.characteristics & InputDeviceCharacteristics.Left) != 0)
             {
-                input = controllerInput[(int)BWHand.BWControllerType.LeftHand];
+                input = controllerInput[(int)HandScript.ControllerType.LeftHand];
                 input.isPresent = true;
                 input.device = device;
             }
             if ((device.characteristics & InputDeviceCharacteristics.Right) != 0)
             {
-                input = controllerInput[(int)BWHand.BWControllerType.RightHand];
+                input = controllerInput[(int)HandScript.ControllerType.RightHand];
                 input.isPresent = true;
                 input.device = device;
             }        
         }
 
         // Handle toggling the different XR Mirror render modes
-        if (BWKeyboard.Was_F12_PressedThisFrame() )
+        if (KeyboardScript.Was_F12_PressedThisFrame() )
         {
             if (XRSettings.gameViewRenderMode == GameViewRenderMode.None)
             {

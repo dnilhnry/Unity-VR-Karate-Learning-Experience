@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BWPlayer : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
     private Transform mainCam;
     private Transform head;
@@ -73,8 +73,8 @@ public class BWPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        mainCam = BWTransform.FindAlways("Main Camera");
-        head = BWTransform.FindAlways("Head");
+        mainCam = TransformScript.FindAlways("Main Camera");
+        head = TransformScript.FindAlways("Head");
     }
 
     void Start()
@@ -85,7 +85,7 @@ public class BWPlayer : MonoBehaviour
 
     private void DoMovement(float timeIncrement)
     {
-        if (BWVR.IsVRAndRoomScale())
+        if (VRScript.IsVRAndRoomScale())
         {
             // If we are doing room scale - it is a little meaningless to 
             // to allow the XR rig to be moved around as our reference
@@ -108,28 +108,28 @@ public class BWPlayer : MonoBehaviour
 
         // Are they speeding up movement
         float speed = timeIncrement;
-        if (BWKeyboard.Is_LeftShift_Pressed())
+        if (KeyboardScript.Is_LeftShift_Pressed())
         {
             speed *= 10.0f;
         }
 
         // Navigate by keyboard WASD
-        if (BWKeyboard.Is_W_Pressed())
+        if (KeyboardScript.Is_W_Pressed())
         {
             movement = q * new Vector3(0, 0, -1.0f);
             transform.position += movement * speed;
         }
-        if (BWKeyboard.Is_S_Pressed())
+        if (KeyboardScript.Is_S_Pressed())
         {
             movement = q * new Vector3(0, 0, 1.0f);
             transform.position += movement * speed;
         }
-        if (BWKeyboard.Is_A_Pressed())
+        if (KeyboardScript.Is_A_Pressed())
         {
             movement = q * new Vector3(1.0f, 0, 0);
             transform.position += movement * speed;
         }
-        if (BWKeyboard.Is_D_Pressed())
+        if (KeyboardScript.Is_D_Pressed())
         {
             movement = q * new Vector3(-1.0f, 0, 0);
             transform.position += movement * speed;
@@ -146,7 +146,7 @@ public class BWPlayer : MonoBehaviour
         }
 
         // We only move when the mouse button is pressed and use the delta position
-        if (BWMouse.IsRightButton())
+        if (MouseScript.IsRightButton())
         {
             if (lastMousePosition != Vector3.zero)
             {
@@ -157,13 +157,13 @@ public class BWPlayer : MonoBehaviour
             }
             lastMousePosition = Input.mousePosition;
         }
-        else if (BWMouse.IsRightButtonUp())
+        else if (MouseScript.IsRightButtonUp())
         {
             lastMousePosition = Vector3.zero;
         }
 
         // Optional to stop pitch control on the mouse in VR
-        if (BWVR.IsVR() == true)
+        if (VRScript.IsVR() == true)
         {
             mouseRotation.y = 0;
         }
@@ -173,10 +173,10 @@ public class BWPlayer : MonoBehaviour
     //
     private void DoXRLook(float timeIncrement)
     {
-        var controllers = EnumUtil.GetValues<BWHand.BWControllerType>();
-        foreach (BWHand.BWControllerType controllerId in controllers)
+        var controllers = EnumUtil.GetValues<HandScript.ControllerType>();
+        foreach (HandScript.ControllerType controllerId in controllers)
         {
-            BWVR.BWInputController input = BWVR.GetInput(controllerId);
+            VRScript.InputController input = VRScript.GetInput(controllerId);
         }
     }
 
@@ -215,13 +215,13 @@ public class BWPlayer : MonoBehaviour
         }
 
         // This saves the player position
-        if (BWKeyboard.Was_Delete_PressedThisFrame())
+        if (KeyboardScript.Was_Delete_PressedThisFrame())
         {
             PlayerPrefs.DeleteAll();
         }
 
         // This resets the player to 0
-        if (BWKeyboard.Was_R_PressedThisFrame())
+        if (KeyboardScript.Was_R_PressedThisFrame())
         {
             // Reset the player
             mouseRotation = Vector3.zero;
