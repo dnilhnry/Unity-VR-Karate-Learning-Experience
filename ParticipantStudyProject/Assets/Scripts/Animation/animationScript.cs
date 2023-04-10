@@ -55,8 +55,6 @@ public class animationScript : MonoBehaviour
 
     public void SetAGEUKE()
     {
-        animatorController.SetBool("mirrored", false);
-        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.AGE-UKE";
         pauseFrame = 24.0f/64.0f;
         animatorController.Play(state, -1, 0);
@@ -66,8 +64,6 @@ public class animationScript : MonoBehaviour
 
     public void SetGEDANBARAI()
     {
-        animatorController.SetBool("mirrored", false);
-        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.GEDAN-BARAI";
         pauseFrame = 20.0f/66.0f;
         animatorController.Play(state, -1, 0);
@@ -77,8 +73,6 @@ public class animationScript : MonoBehaviour
 
     public void SetSOTOUKE()
     {
-        animatorController.SetBool("mirrored", false);
-        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.SOTO-UKE";
         pauseFrame = 20.0f/53.0f;
         animatorController.Play(state, -1, 0);
@@ -88,8 +82,6 @@ public class animationScript : MonoBehaviour
 
     public void SetUCHIUKE()
     {
-        animatorController.SetBool("mirrored", false);
-        animatorController.SetFloat("offset", 0.00f);
         state = "Base Layer.UCHI-UKE";
         pauseFrame = 19.0f/45.0f;
         animatorController.Play(state, -1, 0);
