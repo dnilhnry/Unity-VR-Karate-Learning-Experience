@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -390,7 +390,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TECHNIQUE DESCRIPTION
+  m_Text: 'Heiko-dachi translates to ''parallel stance'' in English.
+
+    This stance
+    is used throughout this application.
+
+    The use of this stance is uncommon
+    as fighting with your feet parallel is not ideal, however, it is useful while
+    learning new techniques that mainly use the upper body, allowing the learner
+    to focus on correct arm placement / movement.'
 --- !u!222 &88202418
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -636,7 +644,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: TECHNIQUE NAME
+  m_Text: Heiko-dachi
 --- !u!222 &111963190
 CanvasRenderer:
   m_ObjectHideFlags: 0
