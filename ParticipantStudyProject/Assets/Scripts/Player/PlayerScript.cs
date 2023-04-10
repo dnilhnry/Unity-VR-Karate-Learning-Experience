@@ -6,9 +6,6 @@ public class PlayerScript : MonoBehaviour
     private Transform head;
 
     [SerializeField]
-    bool invertLook = false;
-
-    [SerializeField]
     float MovementSpeed = 1.0f;
 
     [SerializeField]
@@ -18,7 +15,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField]
     private Vector3 mouseRotation;          // this is summed to allow user to rotate with the mouse
 
-    bool lastInvertLook = false;            // This allows us to toggle invert look at run time and detect we have swapped modes
     private Vector3 lastMousePosition;      // we use this to allow the user to touch and relase on the screen
     private float rightStickYaw = 0;        // these are summed to allow user to rotate with the stick
     private float rightStickPitch = 0;      // these are summed to allow user to rotate with the stick
@@ -38,15 +34,6 @@ public class PlayerScript : MonoBehaviour
         camPos.y = PlayerPrefs.GetFloat("camPos.y", 0);
         camPos.z = PlayerPrefs.GetFloat("camPos.z", 0);
         transform.position = camPos;
-
-        if (PlayerPrefs.GetInt("invertLook", 0) == 1)
-        {
-            invertLook = true;
-        }
-        else
-        {
-            invertLook = false;
-        }
     }
 
     public void SavePrefs()
@@ -59,15 +46,6 @@ public class PlayerScript : MonoBehaviour
         PlayerPrefs.SetFloat("camPos.x", camPos.x);
         PlayerPrefs.SetFloat("camPos.y", camPos.y);
         PlayerPrefs.SetFloat("camPos.z", camPos.z);
-
-        if (invertLook)
-        {
-            PlayerPrefs.SetInt("invertLook", 1);
-        }
-        else
-        {
-            PlayerPrefs.SetInt("invertLook", 0);
-        }
     }
 
     // Start is called before the first frame update
@@ -110,41 +88,34 @@ public class PlayerScript : MonoBehaviour
         float speed = timeIncrement;
         if (KeyboardScript.Is_LeftShift_Pressed())
         {
-            speed *= 10.0f;
+            speed *= 5.0f;
         }
 
         // Navigate by keyboard WASD
         if (KeyboardScript.Is_W_Pressed())
         {
-            movement = q * new Vector3(0, 0, -1.0f);
+            movement = q * new Vector3(0, 0, 1.0f);
             transform.position += movement * speed;
         }
         if (KeyboardScript.Is_S_Pressed())
         {
-            movement = q * new Vector3(0, 0, 1.0f);
+            movement = q * new Vector3(0, 0, -1.0f);
             transform.position += movement * speed;
         }
         if (KeyboardScript.Is_A_Pressed())
         {
-            movement = q * new Vector3(1.0f, 0, 0);
+            movement = q * new Vector3(-1.0f, 0, 0);
             transform.position += movement * speed;
         }
         if (KeyboardScript.Is_D_Pressed())
         {
-            movement = q * new Vector3(-1.0f, 0, 0);
+            movement = q * new Vector3(1.0f, 0, 0);
             transform.position += movement * speed;
         }
     }
 
     private void DoMouseLook(float timeIncrement)
     {
-        // If we change the mouse axis to invert during runtime: flip the values
-        if (lastInvertLook != invertLook)
-        {
-            mouseRotation.y = -mouseRotation.y;
-            lastInvertLook = invertLook;
-        }
-
         // We only move when the mouse button is pressed and use the delta position
         if (MouseScript.IsRightButton())
         {
@@ -196,14 +167,7 @@ public class PlayerScript : MonoBehaviour
         // Rotate the view and add this to the camera parent
         float pitch = rightStickPitch + mouseRotation.y;
         float yaw = rightStickYaw + mouseRotation.x + snapLook;
-        if (invertLook)
-        {
-            head.rotation = Quaternion.Euler(-pitch, yaw, 0);
-        }
-        else
-        {
-            head.rotation = Quaternion.Euler(pitch, yaw, 0);
-        }
+        head.rotation = Quaternion.Euler(-pitch, yaw, 0);
     }
 
     void Update()
