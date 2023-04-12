@@ -111,9 +111,9 @@ public class MainScript : MonoBehaviour
         Set100();
 
         Name.text = "Heiko-Dachi";
-        Description.text = "Heiko-Dachi translates to 'parallel stance' in English. \n";
-        Description.text = Description.text + "This stance is used throughout this application. \n";
-        Description.text = Description.text + "The use of this stance is uncommon as fighting with your feet parallel is not ideal, however, it is useful while learning new techniques that mainly use the upper body, allowing the learner to focus on correct arm placement / movement. \n";
+        Description.text = "Heiko-Dachi translates to 'parallel stance' in English. \n\n";
+        Description.text = Description.text + "This stance is used during every technique throughout this application. \n\n";
+        Description.text = Description.text + "The use of this stance is uncommon in practical Karate, fighting with your feet parallel is not an ideal stance. This stance is useful while learning new techniques, it allows the student to focus on correct arm placement / movement. \n";
 
         Resume();
     }
