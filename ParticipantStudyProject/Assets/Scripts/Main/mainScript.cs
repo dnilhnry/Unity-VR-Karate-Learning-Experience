@@ -39,8 +39,7 @@ public class mainScript : MonoBehaviour
     void Start()
     {
         animatorController = GetComponent<Animator>();
-        SetIDLE();
-        SetLeft();
+        Reset();
     }
 
     //-------------------------------------------------------------
