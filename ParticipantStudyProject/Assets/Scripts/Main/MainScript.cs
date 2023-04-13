@@ -34,8 +34,6 @@ public class MainScript : MonoBehaviour
     [SerializeField] private GameObject MidAttack;
     [SerializeField] private GameObject LowAttack;
     
-
-
     float defaultHeight = 177.0f;
     float heightMultiplier;
     string state;
