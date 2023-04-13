@@ -30,11 +30,18 @@ public class MainScript : MonoBehaviour
     [SerializeField] private GameObject InfoPanel;
     [SerializeField] private Text Name;
     [SerializeField] private Text Description;
+    [SerializeField] private GameObject AgeUkeAttack;
+    [SerializeField] private GameObject GedanBaraiAttack;
+    [SerializeField] private GameObject SotoUkeAttack;
+    [SerializeField] private GameObject UchiUkeAttack;
+
 
     float defaultHeight = 177.0f;
     float heightMultiplier;
     string state;
     float pauseFrame;
+    bool paused;
+    float timeElapsed;
 
     void Start()
     {
@@ -261,12 +268,37 @@ public class MainScript : MonoBehaviour
 
     public void Pause()
     {
+        paused = true;
         animatorController.Play(state, -1, pauseFrame);
         animatorController.speed = 0;
+        switch (state)
+        {
+            case "Base Layer.Idle":
+                break;
+            case "Base Layer.AGE-UKE":
+                AgeUkeAttack.SetActive(true);                
+                break;
+            case "Base Layer.GEDAN-BARAI":
+                GedanBaraiAttack.SetActive(true);
+                break;
+            case "Base Layer.SOTO-UKE":
+                // SotoUkeAttack.SetActive(true);
+                break;
+            case "Base Layer.UCHI-UKE":
+                // UchiUkeAttack.SetActive(true);
+                break;
+            default:
+                break;
+        }
     }
 
     public void Resume()
     {
+        paused = false;
+        AgeUkeAttack.SetActive(false);
+        GedanBaraiAttack.SetActive(false);
+        // SotoUkeAttack.SetActive(false);
+        // UchiUkeAttack.SetActive(false);
         animatorController.speed = 1;
     }
 
@@ -286,6 +318,40 @@ public class MainScript : MonoBehaviour
     {
         InfoPanel.SetActive(false);
         ToolsPanel.SetActive(true);
+    }
+
+    //-------------------------------------------------------------
+
+    // Other functions
+    //-------------------------------------------------------------
+
+    void Update()
+    {
+        if ( paused == true )
+        {
+            if (state == "Base Layer.AGE-UKE")
+            {
+                AgeUkeAttack.transform.localRotation = Quaternion.Euler( ( 45 * Mathf.Sin( timeElapsed ) ), 0, 0);
+            }
+            if (state == "Base Layer.GEDAN-BARAI")
+            {
+                if (animatorController.GetBool("mirrored") == false)
+                {
+                    GedanBaraiAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), -105);
+                }
+                else if (animatorController.GetBool("mirrored") == true)
+                {
+                    GedanBaraiAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), 105);
+                }
+            }
+            // if (state == "Base Layer.SOTO-UKE")
+            // {
+            // }
+            // if (state == "Base Layer.UCHI-UKE")
+            // {
+            // }
+            timeElapsed += Time.deltaTime;
+        }
     }
 
     //-------------------------------------------------------------
