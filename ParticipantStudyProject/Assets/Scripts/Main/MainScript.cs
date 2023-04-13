@@ -282,10 +282,10 @@ public class MainScript : MonoBehaviour
                 LowAttack.SetActive(true);
                 break;
             case "Base Layer.SOTO-UKE":
-                // MidAttack.SetActive(true);
+                MidAttack.SetActive(true);
                 break;
             case "Base Layer.UCHI-UKE":
-                // MidAttack.SetActive(true);
+                MidAttack.SetActive(true);
                 break;
             default:
                 break;
@@ -296,7 +296,7 @@ public class MainScript : MonoBehaviour
     {
         paused = false;
         HighAttack.SetActive(false);
-        // MidAttack.SetActive(false);
+        MidAttack.SetActive(false);
         LowAttack.SetActive(false);
         animatorController.speed = 1;
     }
@@ -343,9 +343,10 @@ public class MainScript : MonoBehaviour
                     LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), 105);
                 }
             }
-            // if ( state == "Base Layer.SOTO-UKE" || state == "Base Layer.UCHI-UKE" )
-            // {
-            // }
+            if ( state == "Base Layer.SOTO-UKE" || state == "Base Layer.UCHI-UKE" )
+            {
+                MidAttack.transform.localPosition = new Vector3( 0, 1.35f, -1.15f + ( 0.25f * Mathf.Sin( timeElapsed ) ));
+            }
 
             timeElapsed += Time.deltaTime;
         }
