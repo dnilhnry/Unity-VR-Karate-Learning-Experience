@@ -35,7 +35,7 @@ public class MainScript : MonoBehaviour
     [SerializeField] private GameObject LowAttack;
     
     float defaultHeight = 177.0f;
-    float heightMultiplier;
+    float heightMultiplier = 1;
     string state;
     float pauseFrame;
     bool paused;
@@ -134,7 +134,8 @@ public class MainScript : MonoBehaviour
         Name.text = "Age-Uke";
         Description.text = "Age-Uke translates to 'rising block' in English. \n\n";
         Description.text = Description.text + "This technique is used to block an attack aimed at your head. \n\n";
-        Description.text = Description.text + "It is important that the forearm used to block the attack is positioned above your head. \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack is positioned above your head. \n\n";
+        Description.text = Description.text + "The demonstration attack comes from above the head, the block stops the attack before it can reach its target.";
 
         Resume();
     }
@@ -149,7 +150,8 @@ public class MainScript : MonoBehaviour
         Name.text = "Gedan-Barai";
         Description.text = "Gedan-Barai translates to 'low block' in English. \n\n";
         Description.text = Description.text + "This technique is used to block an attack aimed at your lower body. \n\n";
-        Description.text = Description.text + "It is important that the forearm used to block the attack is positioned far to the side of your body. \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack is positioned far to the side of your body. \n\n";
+        Description.text = Description.text + "The demonstration attack is directed at the lower body, the block stops the attack before it can reach its target.";
 
         Resume();
     }
@@ -164,7 +166,8 @@ public class MainScript : MonoBehaviour
         Name.text = "Soto-Uke";
         Description.text = "Soto-Uke translates to 'outer block' in English. \n\n";
         Description.text = Description.text + "This technique is used to block an attack aimed at your chest. \n\n";
-        Description.text = Description.text + "It is important that the forearm used to block the attack comes all the way across your body. \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack comes all the way across your body. \n\n";
+        Description.text = Description.text + "The demonstration attack is directed at the chest, the block should move the attack to the side of your body before it reaches you.";
 
         Resume();
     }
@@ -179,7 +182,8 @@ public class MainScript : MonoBehaviour
         Name.text = "Uchi-Uke";
         Description.text = "Uchi-Uke translates to 'inner block' in English. \n\n";
         Description.text = Description.text + "This technique is used to block an attack aimed at your chest. \n\n";
-        Description.text = Description.text + "It is important that the forearm used to block the attack comes from the inside, across your body. \n";
+        Description.text = Description.text + "It is important that the forearm used to block the attack comes from the inside, across your body. \n\n";
+        Description.text = Description.text + "The demonstration attack is directed at the chest, the block should move the attack to the side of your body before it reaches you.";
 
         Resume();
     }
@@ -328,10 +332,12 @@ public class MainScript : MonoBehaviour
         {
             if ( state == "Base Layer.AGE-UKE" )
             {
+                HighAttack.transform.localPosition = new Vector3( 0, ( 1.35f * heightMultiplier) , -0.7f );
                 HighAttack.transform.localRotation = Quaternion.Euler( ( 45 * Mathf.Sin( timeElapsed ) ), 0, 0);
             }
             if ( state == "Base Layer.GEDAN-BARAI" )
             {
+                LowAttack.transform.localPosition = new Vector3( 0, ( 1.1f * heightMultiplier) , -0.85f );
                 if ( animatorController.GetBool("mirrored" ) == false)
                 {
                     LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), -105);
@@ -343,7 +349,7 @@ public class MainScript : MonoBehaviour
             }
             if ( state == "Base Layer.SOTO-UKE" || state == "Base Layer.UCHI-UKE" )
             {
-                MidAttack.transform.localPosition = new Vector3( 0, 1.35f, -1.15f + ( 0.25f * Mathf.Sin( timeElapsed ) ));
+                MidAttack.transform.localPosition = new Vector3( 0, ( 1.275f * heightMultiplier), -1.15f + ( 0.25f * Mathf.Sin( timeElapsed ) ));
             }
 
             timeElapsed += Time.deltaTime;
