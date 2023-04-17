@@ -30,16 +30,18 @@ public class MainScript : MonoBehaviour
     [SerializeField] private GameObject InfoPanel;
     [SerializeField] private Text Name;
     [SerializeField] private Text Description;
+    [SerializeField] private Text AttackBTN_Text;
     [SerializeField] private GameObject HighAttack;
     [SerializeField] private GameObject MidAttack;
     [SerializeField] private GameObject LowAttack;
     
     float defaultHeight = 177.0f;
     float heightMultiplier = 1;
-    string state;
-    float pauseFrame;
-    bool paused;
-    float timeElapsed;
+    string state = "Base Layer.Idle";
+    float pauseFrame = 0;
+    bool paused = false;
+    bool attackDemo = false;
+    float timeElapsed = 0;
 
     void Start()
     {
@@ -75,6 +77,7 @@ public class MainScript : MonoBehaviour
         SetDefaultHeight();
         SetIDLE();
         SetLeft();
+        StopAttackDemo();
     }
 
     public void Quit()
@@ -98,6 +101,7 @@ public class MainScript : MonoBehaviour
     public void SetDefaultHeight()
     {
         height_Slider.value = defaultHeight;
+        heightMultiplier = 1;
         character.transform.localScale = new Vector3(1, 1, 1);
         height_Text.text = height_Slider.value.ToString("0") +  " cm";
     }
@@ -273,33 +277,11 @@ public class MainScript : MonoBehaviour
         paused = true;
         animatorController.Play(state, -1, pauseFrame);
         animatorController.speed = 0;
-        switch (state)
-        {
-            case "Base Layer.Idle":
-                break;
-            case "Base Layer.AGE-UKE":
-                HighAttack.SetActive(true);                
-                break;
-            case "Base Layer.GEDAN-BARAI":
-                LowAttack.SetActive(true);
-                break;
-            case "Base Layer.SOTO-UKE":
-                MidAttack.SetActive(true);
-                break;
-            case "Base Layer.UCHI-UKE":
-                MidAttack.SetActive(true);
-                break;
-            default:
-                break;
-        }
     }
 
     public void Resume()
     {
         paused = false;
-        HighAttack.SetActive(false);
-        MidAttack.SetActive(false);
-        LowAttack.SetActive(false);
         animatorController.speed = 1;
     }
 
@@ -323,35 +305,101 @@ public class MainScript : MonoBehaviour
 
     //-------------------------------------------------------------
 
+
+    // Attack functions
+    //-------------------------------------------------------------
+
+    public void ToggleAttackDemo()
+    {
+        if ( attackDemo == true )
+        {
+            StopAttackDemo();
+            AttackBTN_Text.text = "Enable";
+        }
+        else if ( attackDemo == false )
+        {
+            attackDemo = true;
+            AttackBTN_Text.text = "Disable";
+        }
+    }
+
+    public void StopAttackDemo()
+    {
+        attackDemo = false;
+        HighAttack.SetActive(false);
+        MidAttack.SetActive(false);
+        LowAttack.SetActive(false);
+    }
+
+    public void AttackDemo(float timeElapsed)
+    {
+        if ( state == "Base Layer.AGE-UKE" )
+        {
+            HighAttack.transform.localPosition = new Vector3( 0, ( 1.35f * heightMultiplier) , -0.7f );
+            HighAttack.transform.localRotation = Quaternion.Euler( ( 45 * Mathf.Sin( timeElapsed ) ), 0, 0);
+        }
+        if ( state == "Base Layer.GEDAN-BARAI" )
+        {
+            LowAttack.transform.localPosition = new Vector3( 0, ( 1.1f * heightMultiplier) , -0.85f );
+            if ( animatorController.GetBool("mirrored" ) == false)
+            {
+                LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), -105);
+            }
+            else if ( animatorController.GetBool("mirrored" ) == true)
+            {
+                LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), 105);
+            }
+        }
+        if ( state == "Base Layer.SOTO-UKE" || state == "Base Layer.UCHI-UKE" )
+        {
+            MidAttack.transform.localPosition = new Vector3( 0, ( 1.275f * heightMultiplier), -1.15f + ( 0.25f * Mathf.Sin( timeElapsed ) ));
+        }
+    }
+
+    //-------------------------------------------------------------
+
+
     // Other functions
     //-------------------------------------------------------------
 
     void Update()
     {
-        if ( paused == true )
+        if ( attackDemo == true )
         {
-            if ( state == "Base Layer.AGE-UKE" )
+            switch (state)
             {
-                HighAttack.transform.localPosition = new Vector3( 0, ( 1.35f * heightMultiplier) , -0.7f );
-                HighAttack.transform.localRotation = Quaternion.Euler( ( 45 * Mathf.Sin( timeElapsed ) ), 0, 0);
+                case "Base Layer.Idle":
+                    HighAttack.SetActive(false);
+                    MidAttack.SetActive(false);
+                    LowAttack.SetActive(false);
+                    break;
+                case "Base Layer.AGE-UKE":
+                    HighAttack.SetActive(true); 
+                    MidAttack.SetActive(false);
+                    LowAttack.SetActive(false);               
+                    break;
+                case "Base Layer.GEDAN-BARAI":
+                    HighAttack.SetActive(false);
+                    MidAttack.SetActive(false);
+                    LowAttack.SetActive(true);
+                    break;
+                case "Base Layer.SOTO-UKE":
+                    HighAttack.SetActive(false);
+                    MidAttack.SetActive(true);
+                    LowAttack.SetActive(false);
+                    break;
+                case "Base Layer.UCHI-UKE":
+                    HighAttack.SetActive(false);
+                    MidAttack.SetActive(true);
+                    LowAttack.SetActive(false);
+                    break;
+                default:
+                    HighAttack.SetActive(false);
+                    MidAttack.SetActive(false);
+                    LowAttack.SetActive(false);
+                    break;
             }
-            if ( state == "Base Layer.GEDAN-BARAI" )
-            {
-                LowAttack.transform.localPosition = new Vector3( 0, ( 1.1f * heightMultiplier) , -0.85f );
-                if ( animatorController.GetBool("mirrored" ) == false)
-                {
-                    LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), -105);
-                }
-                else if ( animatorController.GetBool("mirrored" ) == true)
-                {
-                    LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), 105);
-                }
-            }
-            if ( state == "Base Layer.SOTO-UKE" || state == "Base Layer.UCHI-UKE" )
-            {
-                MidAttack.transform.localPosition = new Vector3( 0, ( 1.275f * heightMultiplier), -1.15f + ( 0.25f * Mathf.Sin( timeElapsed ) ));
-            }
-
+            AttackDemo(timeElapsed);
             timeElapsed += Time.deltaTime;
         }
     }
