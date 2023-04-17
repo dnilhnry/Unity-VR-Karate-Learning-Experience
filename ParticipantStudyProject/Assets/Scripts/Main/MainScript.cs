@@ -9,9 +9,14 @@ public class MainScript : MonoBehaviour
     // documentation
     //-------------------------------------------------------------
 
+    // https://docs.unity3d.com/ScriptReference/MonoBehaviour.Start.html
+    // https://docs.unity3d.com/ScriptReference/MonoBehaviour.Update.html
+    // https://docs.unity3d.com/ScriptReference/SerializeField.html
     // https://docs.unity3d.com/ScriptReference/GameObject.html
-    // https://docs.unity3d.com/ScriptReference/UIElements.Slider.html
     // https://docs.unity3d.com/ScriptReference/Animator.html
+    // https://docs.unity3d.com/ScriptReference/Transform.html
+    // https://docs.unity3d.com/ScriptReference/UIElements.Button.html
+    // https://docs.unity3d.com/ScriptReference/UIElements.Slider.html
     // https://docs.unity3d.com/2019.1/Documentation/ScriptReference/UI.Text.html
 
     //-------------------------------------------------------------
@@ -88,7 +93,7 @@ public class MainScript : MonoBehaviour
     //-------------------------------------------------------------
 
 
-    // set character height
+    // character height functions
     //-------------------------------------------------------------
 
     public void SetHeight()
@@ -109,7 +114,7 @@ public class MainScript : MonoBehaviour
     //-------------------------------------------------------------
 
 
-    // technique button functions
+    // animation state functions
     //-------------------------------------------------------------
 
     public void SetIDLE()
@@ -195,7 +200,7 @@ public class MainScript : MonoBehaviour
     //-------------------------------------------------------------
 
 
-    // playback speed button functions
+    // animation playback speed functions
     //-------------------------------------------------------------
 
     public void Set005()
@@ -249,7 +254,7 @@ public class MainScript : MonoBehaviour
     //-------------------------------------------------------------
 
 
-    // lead hand button functions
+    // animation mirroring functions
     //-------------------------------------------------------------
 
     public void SetLeft()
@@ -269,7 +274,7 @@ public class MainScript : MonoBehaviour
     //-------------------------------------------------------------
 
 
-    // pause button functions
+    // pause animation functions
     //-------------------------------------------------------------
 
     public void Pause()
@@ -288,7 +293,7 @@ public class MainScript : MonoBehaviour
     //-------------------------------------------------------------
 
 
-    // Info functions
+    // info page functions
     //-------------------------------------------------------------
 
     public void InfoOpen()
@@ -306,7 +311,7 @@ public class MainScript : MonoBehaviour
     //-------------------------------------------------------------
 
 
-    // Attack functions
+    // demonstration attack functions
     //-------------------------------------------------------------
 
     public void ToggleAttackDemo()
@@ -331,35 +336,35 @@ public class MainScript : MonoBehaviour
         LowAttack.SetActive(false);
     }
 
-    public void AttackDemo(float timeElapsed)
+    public void AttackDemo(float time)
     {
         if ( state == "Base Layer.AGE-UKE" )
         {
             HighAttack.transform.localPosition = new Vector3( 0, ( 1.35f * heightMultiplier) , -0.7f );
-            HighAttack.transform.localRotation = Quaternion.Euler( ( 45 * Mathf.Sin( timeElapsed ) ), 0, 0);
+            HighAttack.transform.localRotation = Quaternion.Euler( ( 45 * Mathf.Sin( time ) ), 0, 0);
         }
         if ( state == "Base Layer.GEDAN-BARAI" )
         {
             LowAttack.transform.localPosition = new Vector3( 0, ( 1.1f * heightMultiplier) , -0.85f );
             if ( animatorController.GetBool("mirrored" ) == false)
             {
-                LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), -105);
+                LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( time ) ), -105);
             }
             else if ( animatorController.GetBool("mirrored" ) == true)
             {
-                LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( timeElapsed ) ), 105);
+                LowAttack.transform.localRotation = Quaternion.Euler( 0, ( 71.5f * Mathf.Sin( time ) ), 105);
             }
         }
         if ( state == "Base Layer.SOTO-UKE" || state == "Base Layer.UCHI-UKE" )
         {
-            MidAttack.transform.localPosition = new Vector3( 0, ( 1.275f * heightMultiplier), -1.15f + ( 0.25f * Mathf.Sin( timeElapsed ) ));
+            MidAttack.transform.localPosition = new Vector3( 0, ( 1.275f * heightMultiplier), -1.15f + ( 0.25f * Mathf.Sin( time ) ));
         }
     }
 
     //-------------------------------------------------------------
 
 
-    // Other functions
+    // other functions
     //-------------------------------------------------------------
 
     void Update()
