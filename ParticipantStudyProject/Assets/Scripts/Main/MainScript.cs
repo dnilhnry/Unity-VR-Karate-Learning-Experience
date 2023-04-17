@@ -319,7 +319,6 @@ public class MainScript : MonoBehaviour
         if ( attackDemo == true )
         {
             StopAttackDemo();
-            AttackBTN_Text.text = "Enable";
         }
         else if ( attackDemo == false )
         {
@@ -331,6 +330,7 @@ public class MainScript : MonoBehaviour
     public void StopAttackDemo()
     {
         attackDemo = false;
+        AttackBTN_Text.text = "Enable";
         HighAttack.SetActive(false);
         MidAttack.SetActive(false);
         LowAttack.SetActive(false);
